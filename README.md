@@ -6,7 +6,9 @@
 ```bash
 mvn clean compile
 mvn exec:java
-
+```
+### directory structure
+```bash
 ArenaEdge/
 ├── pom.xml                                          # Maven configuration file
 ├── db/
