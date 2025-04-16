@@ -8,7 +8,7 @@ public class DatabaseConnection {
     // For MySQL
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/arenaedge";
     private static final String JDBC_USER = "root";
-    private static final String JDBC_PASSWORD = "Nirmal@123"; // Change this
+    private static final String JDBC_PASSWORD = "password"; // Change this
     
     private static Connection connection = null;
     
