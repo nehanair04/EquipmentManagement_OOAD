@@ -61,3 +61,36 @@ VALUES
 ('Tennis Racket #2', 'TENNIS', 'MAINTENANCE'),
 ('Badminton Racket #1', 'BADMINTON', 'AVAILABLE'),
 ('Badminton Racket #2', 'BADMINTON', 'CHECKED_OUT');
+
+
+-- Courts table
+CREATE TABLE IF NOT EXISTS courts (
+    court_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    available BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Bookings table
+CREATE TABLE IF NOT EXISTS bookings (
+    booking_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    court_id INT NOT NULL,
+    court_type VARCHAR(50) NOT NULL,
+    start_time TIMESTAMP NOT NULL,
+    end_time TIMESTAMP NOT NULL,
+    status VARCHAR(20) DEFAULT 'SCHEDULED',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (court_id) REFERENCES courts(court_id)
+);
+
+-- Insert some sample courts
+INSERT INTO courts (name, type, available) VALUES 
+('Badminton Court #1', 'BADMINTON', TRUE),
+('Badminton Court #2', 'BADMINTON', TRUE),
+('Squash Court #1', 'SQUASH', TRUE),
+('Squash Court #2', 'SQUASH', TRUE),
+('Tennis Court #1', 'TENNIS', TRUE),
+('Tennis Court #2', 'TENNIS', TRUE);

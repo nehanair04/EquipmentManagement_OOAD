@@ -1,9 +1,9 @@
 package com.arenaedge.view;
 
+import com.arenaedge.view.booking.BookingPanel;
 import com.arenaedge.view.equipment.EquipmentPanel;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class MainFrame extends JFrame {
     
@@ -19,9 +19,9 @@ public class MainFrame extends JFrame {
         
         // Add tabs for each feature
         tabbedPane.addTab("Equipment Management", new EquipmentPanel());
-        
+        tabbedPane.addTab("Court Booking", new BookingPanel());
         // Placeholders for other team members' panels
-        tabbedPane.addTab("Court Booking", new JPanel());  // Team Member 2
+          // Team Member 2
         tabbedPane.addTab("Gym Access", new JPanel());     // Team Member 3
         tabbedPane.addTab("Membership", new JPanel());     // Team Member 4
         
