@@ -21,6 +21,7 @@ ArenaEdge/
 │   │   │           ├── Main.java                    # Application entry point
 │   │   │           ├── controller/
 │   │   │           │   └── EquipmentController.java # Business logic for equipment
+│   │   │           │   └── BookingController.java   # Business logic for booking
 │   │   │           ├── model/
 │   │   │           │   ├── equipment/
 │   │   │           │   │   ├── Equipment.java              # Base class (SRP)
@@ -31,8 +32,13 @@ ArenaEdge/
 │   │   │           │   │       └── EquipmentFactory.java   # Factory Pattern implementation
 │   │   │           │   ├── feedback/
 │   │   │           │   │   └── EquipmentFeedback.java      # Feedback model (SRP)
-│   │   │           │   ├── booking/                        # For Team Member 2
-│   │   │           │   │   └── Booking.java                # Placeholder
+│   │   │           │   ├── booking/                        # Team Member 2
+│   │   │           │   │   ├── Booking.java
+│   │   │           │   │   ├── Court.java
+│   │   │           │   │   └── observer/
+│   │   │           │   │       ├── BookingObserver.java     # Observer interface
+│   │   │           │   │       ├── EmailNotifier.java       # Concrete observer
+│   │   │           │   │       └── SMSNotifier.java         # Concrete observer
 │   │   │           │   ├── gym/                            # For Team Member 3
 │   │   │           │   │   └── GymLog.java                 # Placeholder
 │   │   │           │   ├── membership/                     # For Team Member 4
@@ -40,14 +46,16 @@ ArenaEdge/
 │   │   │           │   └── user/
 │   │   │           │       └── User.java                   # User model (for authentication)
 │   │   │           ├── util/
-│   │   │           │   └── DatabaseConnection.java         # Database utility 
+│   │   │           │   └── DatabaseConnection.java         # Database utility
+│   │   │           │   ├── EmailService.java               # Email sender utility
+│   │   │           │   └── GreenMailManager.java           # For testing emails
 │   │   │           └── view/
 │   │   │               ├── MainFrame.java                  # Main application window
 │   │   │               ├── equipment/
 │   │   │               │   ├── EquipmentPanel.java         # UI for equipment management
 │   │   │               │   └── EquipmentFeedbackPanel.java # UI for feedback
-│   │   │               ├── booking/                        # For Team Member 2
-│   │   │               │   └── BookingPanel.java           # Placeholder
+│   │   │               ├── booking/                        # Team Member 2
+│   │   │               │   └── BookingPanel.java           # UI for booking
 │   │   │               ├── gym/                            # For Team Member 3
 │   │   │               │   └── GymLogPanel.java            # Placeholder
 │   │   │               └── membership/                     # For Team Member 4
