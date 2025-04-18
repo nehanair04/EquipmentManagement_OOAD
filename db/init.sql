@@ -49,7 +49,11 @@ CREATE TABLE IF NOT EXISTS equipment_feedback (
 
 -- Insert some sample data
 INSERT INTO users (username, password, name, email, phone)
-VALUES 
+VALUES
+('pes311', '311@pes', 'mihir', 'mihir@pes', '1234567890'),
+('pes336', '336@pes', 'nandana', 'nandana@pes', '9876543210'),
+('pes342', '342@pes', 'natasha', 'natasha@pes', '5555555555'),
+('pes348', '348@pes', 'neha', 'neha@pes','1111111111'), 
 ('user1', 'password123', 'John Doe', 'john@example.com', '555-1234'),
 ('user2', 'password123', 'Jane Smith', 'jane@example.com', '555-5678');
 
@@ -94,3 +98,11 @@ INSERT INTO courts (name, type, available) VALUES
 ('Squash Court #2', 'SQUASH', TRUE),
 ('Tennis Court #1', 'TENNIS', TRUE),
 ('Tennis Court #2', 'TENNIS', TRUE);
+
+CREATE TABLE IF NOT EXISTS gym_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    timestamp DATETIME NOT NULL,
+    log_type VARCHAR(10) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
