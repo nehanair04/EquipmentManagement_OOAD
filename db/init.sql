@@ -106,3 +106,61 @@ CREATE TABLE IF NOT EXISTS gym_logs (
     log_type VARCHAR(10) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+-- Memberships table
+CREATE TABLE IF NOT EXISTS memberships (
+    membership_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    type VARCHAR(20) NOT NULL,
+    start_date TIMESTAMP NOT NULL,
+    end_date TIMESTAMP NOT NULL,
+    fee DOUBLE NOT NULL,
+    active BOOLEAN DEFAULT TRUE,
+    payment_status VARCHAR(20) DEFAULT 'PENDING',
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Payments table
+CREATE TABLE IF NOT EXISTS payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    membership_id INT DEFAULT 0,
+    booking_id INT DEFAULT 0,
+    amount DOUBLE NOT NULL,
+    payment_method VARCHAR(50) NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    transaction_id VARCHAR(100),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- User notification settings table
+CREATE TABLE IF NOT EXISTS user_notification_settings (
+    user_id INT PRIMARY KEY,
+    email_notifications BOOLEAN DEFAULT TRUE,
+    sms_notifications BOOLEAN DEFAULT FALSE,
+    booking_reminders BOOLEAN DEFAULT TRUE,
+    payment_reminders BOOLEAN DEFAULT TRUE,
+    promotional_notifications BOOLEAN DEFAULT FALSE,
+    reminder_hours INT DEFAULT 24,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Insert sample memberships
+INSERT INTO memberships (user_id, type, start_date, end_date, fee, active, payment_status) VALUES
+(1, 'BASIC', DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 2 MONTH), DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 10 MONTH), 49.99, true, 'PAID'),
+(2, 'PREMIUM', DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 1 MONTH), DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 11 MONTH), 79.99, true, 'PAID'),
+(3, 'GOLD', CURRENT_TIMESTAMP, DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 12 MONTH), 99.99, true, 'PENDING'),
+(4, 'BASIC', DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 3 MONTH), DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 1 DAY), 49.99, false, 'PAID');
+
+-- Insert sample payments
+INSERT INTO payments (user_id, membership_id, amount, payment_method, status, transaction_id) VALUES
+(1, 1, 49.99, 'CREDIT_CARD', 'COMPLETED', 'TXN123456789'),
+(2, 2, 79.99, 'DEBIT_CARD', 'COMPLETED', 'TXN987654321'),
+(3, 0, 25.00, 'CASH', 'COMPLETED', 'TXN202304150001');
+
+-- Insert sample notification settings
+INSERT INTO user_notification_settings (user_id, email_notifications, sms_notifications, booking_reminders, payment_reminders, promotional_notifications, reminder_hours) VALUES
+(1, true, false, true, true, false, 24),
+(2, true, true, true, true, true, 12),
+(3, false, true, true, false, false, 48);

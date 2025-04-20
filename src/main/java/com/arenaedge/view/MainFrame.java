@@ -4,6 +4,8 @@ import com.arenaedge.view.booking.BookingPanel;
 import com.arenaedge.view.equipment.EquipmentPanel;
 import com.arenaedge.view.gym.GymLogPanel;
 import com.arenaedge.view.gym.GymAdminDashboardPanel;
+import com.arenaedge.view.membership.MembershipPanel;
+import com.arenaedge.view.membership.UserProfilePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,6 +32,9 @@ public class MainFrame extends JFrame {
         tabbedPane.addTab("Gym Analytics", new GymAdminDashboardPanel());
 
         tabbedPane.addTab("Membership", new JPanel());     // Team Member 4
+
+        tabbedPane.addTab("Membership", new MembershipPanel());
+        tabbedPane.addTab("User Profile", new UserProfilePanel()); 
         
         // Add to frame
         add(tabbedPane, BorderLayout.CENTER);
