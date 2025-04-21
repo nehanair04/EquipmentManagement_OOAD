@@ -10,7 +10,7 @@ import java.awt.*;
 /**
  * Panel for user profile customization.
  */
-public class UserProfilePanel extends JPanel {
+public class UserProfile extends JPanel {
     private UserProfileController controller;
     
     // User info components
@@ -36,7 +36,7 @@ public class UserProfilePanel extends JPanel {
     /**
      * Constructor for UserProfilePanel
      */
-    public UserProfilePanel() {
+    public UserProfile() {
         this.controller = new UserProfileController();
         
         setLayout(new BorderLayout());

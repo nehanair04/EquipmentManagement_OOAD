@@ -5,7 +5,7 @@ import com.arenaedge.view.equipment.EquipmentPanel;
 import com.arenaedge.view.gym.GymLogPanel;
 import com.arenaedge.view.gym.GymAdminDashboardPanel;
 import com.arenaedge.view.membership.MembershipPanel;
-import com.arenaedge.view.membership.UserProfilePanel;
+import com.arenaedge.view.membership.UserProfile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,16 +25,14 @@ public class MainFrame extends JFrame {
         
         // Add tabs for each feature
         tabbedPane.addTab("Equipment Management", new EquipmentPanel());
+        
         tabbedPane.addTab("Court Booking", new BookingPanel());
-        // Placeholders for other team members' panels
-          // Team Member 2
+
         tabbedPane.addTab("Gym Access", new GymLogPanel());
         tabbedPane.addTab("Gym Analytics", new GymAdminDashboardPanel());
 
-        tabbedPane.addTab("Membership", new JPanel());     // Team Member 4
-
         tabbedPane.addTab("Membership", new MembershipPanel());
-        tabbedPane.addTab("User Profile", new UserProfilePanel()); 
+        tabbedPane.addTab("User Profile", new UserProfile()); 
         
         // Add to frame
         add(tabbedPane, BorderLayout.CENTER);
